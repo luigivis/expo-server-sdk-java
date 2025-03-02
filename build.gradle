@@ -1,13 +1,19 @@
 plugins {
-  id 'com.diffplug.spotless' version '6.19.0'
-  id 'io.freefair.lombok' version '8.3'
+  id 'com.diffplug.spotless' version '7.0.2'
+  id 'io.freefair.lombok' version '8.12.2'
   id 'jacoco'
   id 'java-library'
   id 'maven-publish'
   id 'net.researchgate.release' version '3.0.2'
   id 'org.unbroken-dome.test-sets' version '4.1.0'
   id 'signing'
+  //id 'application'
 }
+
+//application {
+//  // Replace with the fully qualified name of your main class if needed.
+//  mainClass = 'TestSend'
+//}
 
 ext {
   commonsLangVersion = '3.12.0'
@@ -23,7 +29,7 @@ ext {
   slf4jVersion = '1.7.36'
 }
 
-group = 'com.nia-medtech.oss'
+group = 'com.codeisland'
 
 repositories {
   mavenCentral()
@@ -74,7 +80,7 @@ spotless {
   format 'misc', {
     target '*.md', '.gitignore', '*.adoc'
     trimTrailingWhitespace()
-    indentWithSpaces(2)
+    leadingSpacesToTabs(2)
     endWithNewline()
   }
         
@@ -83,7 +89,7 @@ spotless {
   }
 
   java {
-    googleJavaFormat()
+    googleJavaFormat('1.25.2')
     formatAnnotations()
   }
 
