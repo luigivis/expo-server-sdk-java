@@ -11,8 +11,7 @@ repositories {
         maven { url 'https://jitpack.io' }
     }
 ```
-Add the dependency
-Don't forget to add the latest tag (3.1.0 by now)
+Add the dependency and replace `Tag` with the latest tag.
 check the latest tag [here](https://jitpack.io/private#hlspablo/expo-server-sdk-java)
 ```groovy
 dependencies {
