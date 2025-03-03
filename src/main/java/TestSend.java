@@ -32,13 +32,13 @@ public class TestSend {
 
 
         List<TicketResponse.Ticket> response =  client.sendPushNotifications(notifications);
-        // Print responses to console
+
         for (TicketResponse.Ticket ticket : response) {
             System.out.println(ticket.getId());
             System.out.println(ticket.getStatus());
-            System.out.println(ticket.getMessage());
-            System.out.println(ticket.getDetails().getSentAt());
-            System.out.println(ticket.getDetails().getExpoPushToken());
+            //System.out.println(ticket.getMessage());
+            //System.out.println(ticket.getDetails().getSentAt());
+            //System.out.println(ticket.getDetails().getExpoPushToken());
         }
     }
 }
