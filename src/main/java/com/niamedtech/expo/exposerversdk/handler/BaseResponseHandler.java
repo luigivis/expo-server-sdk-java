@@ -27,7 +27,7 @@ public class BaseResponseHandler<T> implements HttpClientResponseHandler<T> {
 
     if (httpResponse.getEntity() != null) {
       final String content = EntityUtils.toString(httpResponse.getEntity());
-      log.debug("Recived Content: {}", content);
+      log.debug("Received Content: {}", content);
       return OBJECT_MAPPER.readValue(content, responseClass);
     }
     throw new HttpException("Entity is null");

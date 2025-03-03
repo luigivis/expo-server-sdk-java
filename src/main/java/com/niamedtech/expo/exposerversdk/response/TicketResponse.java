@@ -6,7 +6,7 @@ import java.util.List;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-/** Response inlcuding tickets for push notifications. */
+/** Response including tickets for push notifications. */
 @Data
 @EqualsAndHashCode(callSuper = false)
 public final class TicketResponse extends BaseResponse<List<TicketResponse.Ticket>> {
@@ -27,6 +27,7 @@ public final class TicketResponse extends BaseResponse<List<TicketResponse.Ticke
       private Error error;
       private Integer sentAt;
       private JsonNode additionalProperties;
+      private String expoPushToken;
     }
 
     private String id;

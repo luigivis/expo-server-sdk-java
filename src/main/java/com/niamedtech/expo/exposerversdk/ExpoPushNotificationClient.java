@@ -17,6 +17,7 @@ import lombok.AllArgsConstructor;
 import lombok.NonNull;
 import org.apache.hc.client5.http.classic.methods.HttpPost;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.hc.core5.http.ContentType;
 import org.apache.hc.core5.http.io.entity.StringEntity;
 
 /**
@@ -60,7 +61,7 @@ public final class ExpoPushNotificationClient {
     }
 
     final String json = objectMapper.writeValueAsString(requestData);
-    final StringEntity stringEntity = new StringEntity(json);
+    final StringEntity stringEntity = new StringEntity(json, ContentType.APPLICATION_JSON.withCharset("UTF-8"));
     request.setEntity(stringEntity);
 
     return request;
