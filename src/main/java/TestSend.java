@@ -13,18 +13,18 @@ public class TestSend {
 
         List<String> to = new ArrayList<>();
         CloseableHttpClient httpClient = HttpClients.createDefault();
-        to.add("ExponentPushToken[SvGo_CI-bb-9R7T4ls2gvH]");
+        to.add("ExponentPushToken[YOUR_TOKEN]");
 
         ExpoPushNotificationClient client = ExpoPushNotificationClient
                 .builder()
                 .setHttpClient(httpClient)
-                .setAccessToken("cKW0GpijtpwdryzZIkQd6RJMHa8-cQZIyDmvoXma")
+                .setAccessToken("YOU_TOKEN")
                 .build();
 
         PushNotification pushNotification = new PushNotification();
         pushNotification.setTo(to);
-        pushNotification.setTitle("MangaRosa");
-        pushNotification.setBody("Corpo3");
+        pushNotification.setTitle("Title");
+        pushNotification.setBody("Body Message");
 
         List<PushNotification> notifications = new ArrayList<>();
         notifications.add(pushNotification);
