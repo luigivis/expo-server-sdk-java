@@ -19,6 +19,7 @@ public final class PushNotification {
   }
 
   @Data
+  @NoArgsConstructor
   public static final class Sound {
     private Boolean critical;
     private String name;
