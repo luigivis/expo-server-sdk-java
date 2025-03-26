@@ -47,6 +47,12 @@ import java.util.List;
         pushNotification.setTo(to);
         pushNotification.setTitle("Title");
         pushNotification.setBody("Message");
+        
+        // Play Sound - iOS Only ( Android uses Channels to configure Sounds ) 
+        // pass the sound name ( the sound must be already available on the project )
+        // Check: https://docs.expo.dev/versions/latest/sdk/notifications/#configurable-properties
+        // and https://docs.expo.dev/versions/latest/sdk/notifications/#set-custom-notification-sounds
+        pushNotification.setSound("sound.wav");
 
         List<PushNotification> notifications = new ArrayList<>();
         notifications.add(pushNotification);
