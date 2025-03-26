@@ -18,20 +18,6 @@ public final class PushNotification {
     NORMAL;
   }
 
-  @Data
-  @NoArgsConstructor
-  public static final class Sound {
-    private Boolean critical;
-    private String name;
-    private Long volume;
-
-    public Sound(Sound other) {
-      this.critical = other.critical;
-      this.name = other.name;
-      this.volume = other.volume;
-    }
-  }
-
   private List<String> to;
 
   private Map<String, Object> data;
@@ -42,7 +28,7 @@ public final class PushNotification {
 
   private String body;
 
-  private Sound sound;
+  private String sound;
 
   private Long ttl;
 
@@ -59,9 +45,7 @@ public final class PushNotification {
     this.title = other.title;
     this.subtitle = other.subtitle;
     this.body = other.body;
-    if (other.sound != null) {
-      this.sound = new Sound(other.sound);
-    }
+    this.sound = other.sound;
     this.ttl = other.ttl;
     this.expiration = other.expiration;
     this.priority = other.priority;
