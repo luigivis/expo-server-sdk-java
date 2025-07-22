@@ -28,6 +28,7 @@ public final class TicketResponse extends BaseResponse<List<TicketResponse.Ticke
       private Integer sentAt;
       private JsonNode additionalProperties;
       private String expoPushToken;
+      private String fault;
     }
 
     private String id;
