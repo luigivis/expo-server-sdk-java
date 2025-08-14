@@ -3,6 +3,19 @@ This is a java implementation of the [node server-side library](https://github.c
 
 ## Installation
 
+### Maven Central [![Maven Central](https://img.shields.io/maven-central/v/io.github.hlspablo/expo-server-sdk-java.svg?label=Maven%20Central)](https://central.sonatype.com/artifact/io.github.hlspablo/expo-server-sdk-java)
+Add **Maven Central** to your repositories (usually already included by default in Gradle projects):
+
+```groovy
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'io.github.hlspablo:expo-server-sdk-java:3.1.5'
+}
+```
+
 ### Jitpack
 Add the JitPack repository to your build file
 ```groovy
