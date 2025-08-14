@@ -167,6 +167,7 @@ jreleaser {
           active = Active.ALWAYS
           url = 'https://central.sonatype.com/api/v1/publisher'
           stagingRepository('build/staging')
+          sign = false
           // mapeia seus secrets do Actions
           username = System.getenv('CENTRAL_PORTAL_USERNAME')
           password = System.getenv('CENTRAL_PORTAL_PASSWORD')
