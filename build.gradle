@@ -98,6 +98,13 @@ spotless {
 }
 
 publishing {
+  repositories {
+    maven {
+      name = "staging"
+      url = uri("$buildDir/staging") // diretório de staging que o JReleaser empacota para enviar
+    }
+  }
+
   publications {
     mavenJava(MavenPublication) {
       from components.java
@@ -166,7 +173,7 @@ jreleaser {
         app {
           active = Active.ALWAYS
           url = 'https://central.sonatype.com/api/v1/publisher'
-          //stagingRepository('build/staging')
+          stagingRepository("$buildDir/staging")
           sign = false
           // mapeia seus secrets do Actions
           username = System.getenv('CENTRAL_PORTAL_USERNAME')
