@@ -154,9 +154,9 @@ jreleaser {
     authors = ['hlspablo']
   }
 
-  // Gradle já assina a publication; manter ALWAYS aqui é ok
+  // Gradle já assina a publication; manter NEVER aqui é ok
   signing {
-    active = Active.ALWAYS
+    active = Active.NEVER
     armored = true
   }
 
