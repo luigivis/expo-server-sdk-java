@@ -7,6 +7,7 @@ plugins {
   id 'net.researchgate.release' version '3.0.2'
   id 'org.unbroken-dome.test-sets' version '4.1.0'
   id 'signing'
+  id 'org.jreleaser' version '1.13.0'
   //id 'application'
 }
 
@@ -41,7 +42,8 @@ ext {
   slf4jVersion = '1.7.36'
 }
 
-group = 'com.codeisland'
+group = 'io.github.hlspablo'
+version = '3.1.5'               
 
 repositories {
   mavenCentral()
@@ -108,52 +110,32 @@ spotless {
 }
 
 publishing {
-  repositories {
-    maven {
-      name = "ossrh"
-      url = isReleaseVersion ? project.ossrhReleaseRepoUrl : project.ossrhSnapshotRepoUrl
-      credentials {
-        username findProperty("ossrhUsername")
-        password findProperty("ossrhPassword")
-      }
-    }
-    
-    maven {
-      name = "nexus"
-      url = isReleaseVersion ? project.nexusReleaseRepoUrl : project.nexusSnapshotRepoUrl
-      credentials {
-        username findProperty("nexusUsername")
-        password findProperty("nexusPassword")
-      }
-    }
-  }
-  
   publications {
     mavenJava(MavenPublication) {
       from components.java
-      
+      artifactId = 'expo-server-sdk-java'
       pom {
-        name = 'expo-server-sdk'
-        description = 'Java implementation of expo-server-sdk implementation.Classes and methods to manage push notifications'
-        url = 'https://github.com/nia-medtech/expo-server-sdk-java'
+        name = 'expo-server-sdk-java'
+        description = 'Java implementation of expo-server-sdk.'
+        url = 'https://github.com/hlspablo/expo-server-sdk-java'
  
         licenses {
           license {
             name = 'The MIT License'
-            url = 'https://raw.githubusercontent.com/nia-medtech/expo-server-sdk-java/edit/main/LICENCE.txt'
+            url = 'https://opensource.org/licenses/MIT'
           }
         }
         developers {
           developer {
-            id = 'oliverwelter'
-            name = 'Oliver Welter'
-            email = 'oliver.welter@nia-medtech.com'
+            id = 'pabllobeg'
+            name = 'Pablo Henrique'
+            email = 'pabllobeg@gmail.com'
           }
         }
         scm {
-          connection = 'scm:git:git@github.com:nia-medtech/expo-server-sdk-java.git'
-          developerConnection = 'scm:git:git@github.com:nia-medtech/expo-server-sdk-java.git'
-          url = 'scm:git:git@github.com:nia-medtech/expo-server-sdk-java.git'
+          url = 'https://github.com/hlspablo/expo-server-sdk-java'
+          connection = 'scm:git:https://github.com/hlspablo/expo-server-sdk-java.git'
+          developerConnection = 'scm:git:ssh://git@github.com/hlspablo/expo-server-sdk-java.git'
         }
       }
     }
@@ -168,8 +150,8 @@ release {
 
 signing {
   required { isReleaseVersion && gradle.taskGraph.hasTask("publish") }
-  def signingKey = findProperty("signingKey")
-  def signingPassword = findProperty("signingPassword")
+  def signingKey = findProperty("signingKey") ?: System.getenv('GPG_PRIVATE_KEY')
+  def signingPassword = findProperty("signingPassword") ?: System.getenv('GPG_PASSPHRASE')
   useInMemoryPgpKeys(signingKey, signingPassword)
   sign publishing.publications.mavenJava
 }

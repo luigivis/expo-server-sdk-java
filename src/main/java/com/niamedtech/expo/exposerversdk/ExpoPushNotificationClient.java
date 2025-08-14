@@ -41,7 +41,6 @@ public final class ExpoPushNotificationClient {
 
   private final String accessToken;
 
-
   public List<TicketResponse.Ticket> sendPushNotifications(
       @NonNull List<PushNotification> notifications) throws IOException {
 
@@ -56,12 +55,13 @@ public final class ExpoPushNotificationClient {
     request.setHeader("accept", "application/json");
     request.setHeader("accept-encoding", "gzip, deflate");
     request.setHeader("content-type", "application/json");
-    if(accessToken != null) {
+    if (accessToken != null) {
       request.setHeader("Authorization", "Bearer " + accessToken);
     }
 
     final String json = objectMapper.writeValueAsString(requestData);
-    final StringEntity stringEntity = new StringEntity(json, ContentType.APPLICATION_JSON.withCharset("UTF-8"));
+    final StringEntity stringEntity =
+        new StringEntity(json, ContentType.APPLICATION_JSON.withCharset("UTF-8"));
     request.setEntity(stringEntity);
 
     return request;
@@ -90,7 +90,6 @@ public final class ExpoPushNotificationClient {
       this.httpClient = httpClient;
       return this;
     }
-
 
     public Builder setAccessToken(@NonNull String accessToken) {
       this.accessToken = accessToken;

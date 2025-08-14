@@ -1,0 +1,28 @@
+project:
+  name: expo-server-sdk-java
+  version: 3.1.5
+  description: Expo server SDK in Java
+  authors: [ "hlspablo" ]
+  license: "MIT"
+
+signing:
+  active: ALWAYS
+  armored: true
+
+# Onde o Gradle gera os artefatos
+files:
+  artifacts:
+    - path: build/libs/expo-server-sdk-java-3.1.5.jar
+    - path: build/libs/expo-server-sdk-java-3.1.5-sources.jar
+    - path: build/libs/expo-server-sdk-java-3.1.5-javadoc.jar
+
+deploy:
+  maven:
+    mavenCentral:
+      sonatype:
+        active: ALWAYS
+        url: https://central.sonatype.com/api/v1/publisher
+        # diretório de staging que o JReleaser empacota para enviar
+        stagingRepositories:
+          - build/staging
+      # credenciais vêm por ENV (secrets do GitHub Actions)
