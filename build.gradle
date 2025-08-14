@@ -8,42 +8,39 @@ plugins {
   id 'org.unbroken-dome.test-sets' version '4.1.0'
   id 'signing'
   id 'org.jreleaser' version '1.13.0'
-  //id 'application'
+  // id 'application'
 }
 
-//application {
-//  // Replace with the fully qualified name of your main class if needed.
-//  mainClass = 'TestSend'
-//}
+// application {
+//   mainClass = 'TestSend'
+// }
 
 tasks.withType(JavaCompile).configureEach {
   options.encoding = 'UTF-8'
 }
-
 tasks.withType(Test).configureEach {
   systemProperty 'file.encoding', 'UTF-8'
 }
-
 tasks.withType(Javadoc).configureEach {
   options.encoding = 'UTF-8'
 }
+
+group = 'io.github.hlspablo'
+version = '3.1.5' // <-- use a versão que vai publicar. Para teste local pode usar 3.1.4
 
 ext {
   commonsLangVersion = '3.12.0'
   hamcrestVersion = '2.2'
   hc5AsyncJsonVersion = '0.3.0'
   httpClientVersion = '5.1.4'
-  isReleaseVersion = !version.endsWith("SNAPSHOT")
   jacksonVersion = '2.13.4'
   junitVersion = '5.10.0'
   logbackVersion = '1.2.12'
   mockitoVersion = '5.5.0'
   mockServerVersion = '5.15.0'
   slf4jVersion = '1.7.36'
+  isReleaseVersion = !version.endsWith("SNAPSHOT")
 }
-
-group = 'io.github.hlspablo'
-version = '3.1.5'               
 
 repositories {
   mavenCentral()
@@ -57,28 +54,26 @@ testSets {
 
 dependencies {
   api "org.apache.httpcomponents.client5:httpclient5:${httpClientVersion}"
-  
+
   implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
   implementation "com.fasterxml.jackson.core:jackson-core:${jacksonVersion}"
   implementation "org.apache.commons:commons-lang3:${commonsLangVersion}"
   implementation "org.slf4j:slf4j-api:${slf4jVersion}"
   implementation "org.slf4j:jcl-over-slf4j:${slf4jVersion}"
-  
+
   integrationTestImplementation "org.mock-server:mockserver-junit-jupiter:${mockServerVersion}"
 
   testImplementation "org.hamcrest:hamcrest:${hamcrestVersion}"
   testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
   testImplementation "org.mockito:mockito-junit-jupiter:${mockitoVersion}"
   testImplementation "org.mockito:mockito-core:${mockitoVersion}"
-  
+
   testRuntimeOnly "ch.qos.logback:logback-classic:${logbackVersion}"
   testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
 }
 
 javadoc {
-  options {
-    addStringOption('Xdoclint:none', '-quiet')
-  }
+  options { addStringOption('Xdoclint:none', '-quiet') }
 }
 
 java {
@@ -86,9 +81,7 @@ java {
   withSourcesJar()
 }
 
-test {
-  useJUnitPlatform()
-}
+test { useJUnitPlatform() }
 
 spotless {
   format 'misc', {
@@ -97,31 +90,27 @@ spotless {
     leadingSpacesToTabs(2)
     endWithNewline()
   }
-        
-  groovyGradle {
-    target '*.gradle'
-  }
-
+  groovyGradle { target '*.gradle' }
   java {
     googleJavaFormat('1.25.2')
     formatAnnotations()
   }
-
 }
 
 publishing {
   publications {
     mavenJava(MavenPublication) {
       from components.java
-      artifactId = 'expo-server-sdk-java'
+      artifactId = 'expo-server-sdk-java' // nome final do artefato no Maven Central
+
       pom {
         name = 'expo-server-sdk-java'
-        description = 'Java implementation of expo-server-sdk.'
+        description = 'Expo server SDK in Java.'
         url = 'https://github.com/hlspablo/expo-server-sdk-java'
- 
+
         licenses {
           license {
-            name = 'The MIT License'
+            name = 'MIT License'
             url = 'https://opensource.org/licenses/MIT'
           }
         }
@@ -143,15 +132,54 @@ publishing {
 }
 
 release {
-  git {
-    requireBranch.set('main|[0-9]+\\.[0-9]+\\.x')
-  }
+  git { requireBranch.set('main|[0-9]+\\.[0-9]+\\.x') }
 }
 
 signing {
-  required { isReleaseVersion && gradle.taskGraph.hasTask("publish") }
+  required { isReleaseVersion && gradle.startParameter.taskNames.any { it.contains('publish') } }
   def signingKey = findProperty("signingKey") ?: System.getenv('GPG_PRIVATE_KEY')
   def signingPassword = findProperty("signingPassword") ?: System.getenv('GPG_PASSPHRASE')
   useInMemoryPgpKeys(signingKey, signingPassword)
   sign publishing.publications.mavenJava
+}
+
+// ===== JReleaser: publica no Sonatype Central Portal =====
+import org.jreleaser.model.Active
+
+jreleaser {
+  project {
+    name = 'expo-server-sdk-java'
+    description = 'Expo server SDK in Java'
+    license = 'MIT'
+    authors = ['hlspablo']
+  }
+
+  // Gradle já assina a publication; manter ALWAYS aqui é ok
+  signing {
+    active = Active.ALWAYS
+    armored = true
+  }
+
+  deploy {
+    maven {
+      mavenCentral {
+        app {
+          active = Active.ALWAYS
+          url = 'https://central.sonatype.com/api/v1/publisher'
+          stagingRepository('build/staging')
+          // mapeia seus secrets do Actions
+          username = System.getenv('CENTRAL_PORTAL_USERNAME')
+          password = System.getenv('CENTRAL_PORTAL_PASSWORD')
+        }
+      }
+    }
+  }
+
+  // Release no GitHub (usa JRELEASER_GITHUB_TOKEN = GITHUB_TOKEN)
+  release {
+    github {
+      overwrite = true
+      changelog { enabled = true }
+    }
+  }
 }
