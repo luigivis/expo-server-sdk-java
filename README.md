@@ -8,11 +8,11 @@ Add **Maven Central** to your repositories (usually already included by default 
 
 ```groovy
 repositories {
-    mavenCentral()
+		mavenCentral()
 }
 
 dependencies {
-    implementation 'io.github.hlspablo:expo-server-sdk-java:3.1.5'
+		implementation 'io.github.hlspablo:expo-server-sdk-java:3.1.6'
 }
 ```
 
