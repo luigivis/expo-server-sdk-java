@@ -1,5 +1,7 @@
 package com.niamedtech.expo.exposerversdk.response;
 
+import com.fasterxml.jackson.annotation.JsonEnumDefaultValue;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonNode;
 import java.util.Map;
@@ -16,6 +18,7 @@ public final class ReceiptResponse extends BaseResponse<Map<String, ReceiptRespo
   public static class Receipt extends BaseResponse.GenericData {
 
     @Data
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class Details {
 
       public enum Error {
@@ -35,13 +38,22 @@ public final class ReceiptResponse extends BaseResponse<Map<String, ReceiptRespo
         INVALID_PROVIDERTOKEN,
 
         @JsonProperty("ProviderError")
-        PROVIDER_ERROR;
+        PROVIDER_ERROR,
+
+        @JsonEnumDefaultValue
+        UNKNOWN;
       }
 
       private Error error;
       private Integer sentAt;
       private String errorCodeEnum;
       private JsonNode additionalProperties;
+      /**
+       * Additional information returned from Firebase Cloud Messaging (FCM) for this receipt.
+       * This field is populated when the notification is sent via FCM and may contain
+       * provider-specific details or error information.
+       */
+      private JsonNode fcm;
     }
 
     private Status status;
