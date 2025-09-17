@@ -48,10 +48,11 @@ public final class ReceiptResponse extends BaseResponse<Map<String, ReceiptRespo
       private Integer sentAt;
       private String errorCodeEnum;
       private JsonNode additionalProperties;
+      
       /**
-       * Additional information returned from Firebase Cloud Messaging (FCM) for this receipt.
-       * This field is populated when the notification is sent via FCM and may contain
-       * provider-specific details or error information.
+       * Additional information returned from Firebase Cloud Messaging (FCM) for this receipt. This
+       * field is populated when the notification is sent via FCM and may contain provider-specific
+       * details or error information.
        */
       private JsonNode fcm;
     }
