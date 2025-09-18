@@ -143,7 +143,13 @@ release {
 }
 
 signing {
-  required { isReleaseVersion && gradle.startParameter.taskNames.any { it.contains('publish') } }
+  // Require signing only when publishing to the Sonatype staging repo (used in the release workflow).
+  // This avoids failures on JitPack, which runs `publishToMavenLocal` and has no signing keys.
+  required {
+    isReleaseVersion && gradle.startParameter.taskNames.any {
+      it.contains('publishMavenJavaPublicationToStagingRepository')
+    }
+  }
   def signingKey = findProperty("signingKey") ?: System.getenv('GPG_PRIVATE_KEY')
   def signingPassword = findProperty("signingPassword") ?: System.getenv('GPG_PASSPHRASE')
   useInMemoryPgpKeys(signingKey, signingPassword)
