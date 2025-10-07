@@ -1,6 +1,6 @@
-package com.niamedtech.expo.exposerversdk.util;
+package com.luigivismara.expo.util;
 
-import com.niamedtech.expo.exposerversdk.request.PushNotification;
+import com.luigivismara.expo.request.PushNotification;
 import java.util.ArrayList;
 import java.util.List;
 

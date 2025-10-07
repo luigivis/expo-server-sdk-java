@@ -1,4 +1,4 @@
-package com.niamedtech.expo.exposerversdk.util;
+package com.luigivismara.expo.util;
 
 import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 

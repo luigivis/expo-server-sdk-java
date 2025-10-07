@@ -1,6 +1,6 @@
-import com.niamedtech.expo.exposerversdk.ExpoPushNotificationClient;
-import com.niamedtech.expo.exposerversdk.request.PushNotification;
-import com.niamedtech.expo.exposerversdk.response.TicketResponse;
+import com.luigivismara.expo.ExpoPushNotificationClient;
+import com.luigivismara.expo.request.PushNotification;
+import com.luigivismara.expo.response.TicketResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;

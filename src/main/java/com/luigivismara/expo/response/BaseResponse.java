@@ -1,4 +1,4 @@
-package com.niamedtech.expo.exposerversdk.response;
+package com.luigivismara.expo.response;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;

@@ -1,4 +1,4 @@
-package com.niamedtech.expo.exposerversdk.handler;
+package com.luigivismara.expo.handler;
 
 import static com.niamedtech.expo.test.ResponseTestFixture.*;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -8,11 +8,11 @@ import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
-import com.niamedtech.expo.exposerversdk.exception.ErrorResponseException;
-import com.niamedtech.expo.exposerversdk.response.ReceiptResponse;
-import com.niamedtech.expo.exposerversdk.response.ReceiptResponse.Receipt;
-import com.niamedtech.expo.exposerversdk.response.Status;
-import com.niamedtech.expo.exposerversdk.response.TicketResponse;
+import com.luigivismara.expo.exception.ErrorResponseException;
+import com.luigivismara.expo.response.ReceiptResponse;
+import com.luigivismara.expo.response.ReceiptResponse.Receipt;
+import com.luigivismara.expo.response.Status;
+import com.luigivismara.expo.response.TicketResponse;
 import java.io.ByteArrayInputStream;
 import java.util.List;
 import java.util.Map;

@@ -27,7 +27,6 @@ jobs:
       - name: Build jars (main/sources/javadoc)
         run: ./gradlew clean javadocJar sourcesJar build
 
-      # 👇 gera o repositório de staging em build/staging
       - name: Publish Maven publication to local staging repo
         env:
           GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}

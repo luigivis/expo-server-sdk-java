@@ -1,4 +1,4 @@
-package com.niamedtech.expo.exposerversdk.response;
+package com.luigivismara.expo.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -19,7 +19,7 @@ public final class TicketResponse extends BaseResponse<List<TicketResponse.Ticke
       @JsonProperty("DeviceNotRegistered")
       DEVICE_NOT_REGISTERED,
       @JsonProperty("InvalidCredentials")
-      INVALID_CREDENTIALS;
+      INVALID_CREDENTIALS
     }
 
     @Data

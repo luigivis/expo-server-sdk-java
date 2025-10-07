@@ -2,7 +2,7 @@ project:
   name: expo-server-sdk-java
   version: 3.1.5
   description: Expo server SDK in Java
-  authors: [ "hlspablo" ]
+  authors: [ "luigivis" ]
   license: "MIT"
 
 signing:

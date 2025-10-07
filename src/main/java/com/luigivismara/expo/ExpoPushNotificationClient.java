@@ -1,13 +1,13 @@
-package com.niamedtech.expo.exposerversdk;
+package com.luigivismara.expo;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.niamedtech.expo.exposerversdk.handler.BaseResponseHandler;
-import com.niamedtech.expo.exposerversdk.request.PushNotification;
-import com.niamedtech.expo.exposerversdk.request.ReceiptRequest;
-import com.niamedtech.expo.exposerversdk.response.ReceiptResponse;
-import com.niamedtech.expo.exposerversdk.response.TicketResponse;
-import com.niamedtech.expo.exposerversdk.util.ObjectMapperFactory;
+import com.luigivismara.expo.handler.BaseResponseHandler;
+import com.luigivismara.expo.request.PushNotification;
+import com.luigivismara.expo.request.ReceiptRequest;
+import com.luigivismara.expo.response.ReceiptResponse;
+import com.luigivismara.expo.response.TicketResponse;
+import com.luigivismara.expo.util.ObjectMapperFactory;
 import java.io.IOException;
 import java.net.URI;
 import java.util.List;
@@ -21,8 +21,8 @@ import org.apache.hc.core5.http.ContentType;
 import org.apache.hc.core5.http.io.entity.StringEntity;
 
 /**
- * Client for synchronous communication with Expo Push Notificatio Servic. See
- * https://docs.expo.dev/push-notifications/sending-notifications/
+ * Client for synchronous communication with Expo Push Notification Services. See
+ * <a href="https://docs.expo.dev/push-notifications/sending-notifications/">Expo Notification Doc.</a>
  */
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public final class ExpoPushNotificationClient {

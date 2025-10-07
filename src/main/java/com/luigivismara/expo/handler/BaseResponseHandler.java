@@ -1,9 +1,9 @@
-package com.niamedtech.expo.exposerversdk.handler;
+package com.luigivismara.expo.handler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.niamedtech.expo.exposerversdk.exception.ErrorResponseException;
-import com.niamedtech.expo.exposerversdk.response.BaseResponse;
-import com.niamedtech.expo.exposerversdk.util.ObjectMapperFactory;
+import com.luigivismara.expo.exception.ErrorResponseException;
+import com.luigivismara.expo.response.BaseResponse;
+import com.luigivismara.expo.util.ObjectMapperFactory;
 import java.io.IOException;
 import lombok.AllArgsConstructor;
 import lombok.NonNull;

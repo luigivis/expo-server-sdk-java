@@ -1,4 +1,4 @@
-package com.niamedtech.expo.exposerversdk.request;
+package com.luigivismara.expo.request;
 
 import java.util.List;
 import lombok.AllArgsConstructor;

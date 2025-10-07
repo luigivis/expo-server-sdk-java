@@ -1,4 +1,4 @@
-package com.niamedtech.expo.exposerversdk.response;
+package com.luigivismara.expo.response;
 
 import com.fasterxml.jackson.annotation.JsonEnumDefaultValue;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -41,7 +41,7 @@ public final class ReceiptResponse extends BaseResponse<Map<String, ReceiptRespo
         PROVIDER_ERROR,
 
         @JsonEnumDefaultValue
-        UNKNOWN;
+        UNKNOWN
       }
 
       private Error error;

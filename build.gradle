@@ -25,8 +25,8 @@ tasks.withType(Javadoc).configureEach {
   options.encoding = 'UTF-8'
 }
 
-group = 'io.github.hlspablo'
-version = '3.1.6'
+group = 'com.luigivismara'
+version = '1.0.0'
 
 // Allow overriding group/version via -Pgroup and -Pversion (used by JitPack)
 if (project.hasProperty('group')) {
@@ -121,7 +121,7 @@ publishing {
       pom {
         name = 'expo-server-sdk-java'
         description = 'Expo server SDK in Java.'
-        url = 'https://github.com/hlspablo/expo-server-sdk-java'
+        url = 'https://github.com/luigivis/expo-server-sdk-java'
 
         licenses {
           license {
@@ -131,15 +131,15 @@ publishing {
         }
         developers {
           developer {
-            id = 'pabllobeg'
-            name = 'Pablo Henrique'
+            id = 'luigivis'
+            name = 'Luigi Vismara'
             email = 'pabllobeg@gmail.com'
           }
         }
         scm {
-          url = 'https://github.com/hlspablo/expo-server-sdk-java'
-          connection = 'scm:git:https://github.com/hlspablo/expo-server-sdk-java.git'
-          developerConnection = 'scm:git:ssh://git@github.com/hlspablo/expo-server-sdk-java.git'
+          url = 'https://github.com/luigivis/expo-server-sdk-java'
+          connection = 'scm:git:https://github.com/luigivis/expo-server-sdk-java.git'
+          developerConnection = 'scm:git:ssh://git@github.com/luigivis/expo-server-sdk-java.git'
         }
       }
     }
@@ -172,7 +172,7 @@ jreleaser {
     name = 'expo-server-sdk-java'
     description = 'Expo server SDK in Java'
     license = 'MIT'
-    authors = ['hlspablo']
+    authors = ['luigivis']
   }
 
   // Gradle já assina a publication; manter NEVER aqui é ok

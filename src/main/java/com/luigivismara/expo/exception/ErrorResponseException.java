@@ -1,6 +1,6 @@
-package com.niamedtech.expo.exposerversdk.exception;
+package com.luigivismara.expo.exception;
 
-import com.niamedtech.expo.exposerversdk.response.BaseResponse.Error;
+import com.luigivismara.expo.response.BaseResponse.Error;
 import java.util.List;
 
 public final class ErrorResponseException extends Exception {
@@ -18,8 +18,6 @@ public final class ErrorResponseException extends Exception {
       for (Error error : errors) {
         sb.append(String.format("%s%n", error.toString()));
       }
-    } else {
-      sb.append("");
     }
 
     return sb.toString();

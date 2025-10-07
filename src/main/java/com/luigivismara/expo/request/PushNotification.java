@@ -1,12 +1,17 @@
-package com.niamedtech.expo.exposerversdk.request;
+package com.luigivismara.expo.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.*;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 public final class PushNotification {
 
   public enum Priority {
@@ -15,7 +20,7 @@ public final class PushNotification {
     @JsonProperty("high")
     ERROR,
     @JsonProperty("normal")
-    NORMAL;
+    NORMAL
   }
 
   private List<String> to;
@@ -27,6 +32,11 @@ public final class PushNotification {
   private String subtitle;
 
   private String body;
+
+  private Image richContent;
+
+  @Builder.Default
+  private Boolean mutableContent = false;
 
   private String sound;
 
@@ -45,11 +55,22 @@ public final class PushNotification {
     this.title = other.title;
     this.subtitle = other.subtitle;
     this.body = other.body;
+    this.richContent = other.richContent;
+    this.mutableContent = other.mutableContent;
     this.sound = other.sound;
     this.ttl = other.ttl;
     this.expiration = other.expiration;
     this.priority = other.priority;
     this.badge = other.badge;
     this.channelId = other.channelId;
+    this.data = other.data;
+  }
+
+  @Data
+  @Builder
+  @NoArgsConstructor
+  @AllArgsConstructor
+  public static class Image {
+      private String image;
   }
 }
