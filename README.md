@@ -2,8 +2,6 @@
 
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Maven Central](https://img.shields.io/maven-central/v/com.luigivismara/expo-server-sdk-java.svg?label=Maven%20Central)](https://central.sonatype.com/artifact/com.luigivismara/expo-server-sdk-java)
-[![JitPack Release](https://jitpack.io/v/luigivis/expo-server-sdk-java.svg)](https://jitpack.io/#luigivis/expo-server-sdk-java)
-[![Build](https://github.com/luigivis/expo-server-sdk-java/actions/workflows/build.yml/badge.svg)](https://github.com/luigivis/expo-server-sdk-java/actions)
 
 ---
 
